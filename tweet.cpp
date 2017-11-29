@@ -83,23 +83,21 @@ string generateTweet(MAP &word){
 	
 } //generateTweet
 
-int main(int argc, char** argv){
+int main(int arg, char** vec){
    
-    MAP word;
-	
-	string str2;
-	string str3 = "";
-	ifstream Speech(argv[1]);
+   	MAP word;
+	string str;
+	string str2 = "";
+	string tweet;
+	ifstream Speech(vec[1]);
 	
 	if(Speech.is_open()){
-		while(getTweet(Speech, str2)){
-			str3 += str2 + " ";
+		while(getline(Speech, str)){
+			str2 += str + " ";
 		}
 	}
 	
-	inputFile(word, str3);	
-	
-	string tweet;
+	inputFile(word, str2);	
 	
 	do{
 		tweet = generateTweet(word);
@@ -112,3 +110,4 @@ int main(int argc, char** argv){
 	return 0;
 
 }//main
+
