@@ -12,3 +12,4 @@ To test the code with an input file, enter one of these commands:
 
 ./tweet starwars.txt
 ./tweet southpark.txt
+./tweet Christmas_Carols.txt
