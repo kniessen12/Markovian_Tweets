@@ -89,9 +89,10 @@ int main(int argc, char** argv){
 	
 	string str2;
 	string str3 = "";
-	ifstream myfile (argv[1]);
-	if(myfile.is_open()){
-		while(getline(myfile, str2)){
+	ifstream Speech(argv[1]);
+	
+	if(Speech.is_open()){
+		while(getTweet(Speech, str2)){
 			str3 += str2 + " ";
 		}
 	}
@@ -105,6 +106,7 @@ int main(int argc, char** argv){
 	}
 	
 	while(tweet.size() > 145 or tweet.size() < 80);
+	
 	cout << tweet << endl;
 	
 	return 0;
