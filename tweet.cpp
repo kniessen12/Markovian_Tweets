@@ -103,7 +103,7 @@ int main(int arg, char** vec){
 		tweet = generateTweet(word);
 	}
 	
-	while(tweet.size() > 145 or tweet.size() < 80);
+	while(tweet.size() > 280 or tweet.size() < 80);
 	
 	cout << tweet << endl;
 	
