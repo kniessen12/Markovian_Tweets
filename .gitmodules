@@ -1,4 +1,0 @@
-[submodule "cpr-example"]
-	path = cpr-example
-	url = https://github.com/ekhaemba/cpr-example.git
-	branch = master
