@@ -4,10 +4,9 @@
 #include <map>
 #include <fstream>
 #include <istream>
-
-#include <stdlib.h> 
+#include <stdlib.h>
+ 
 using namespace std;
-
 
 typedef map< vector<string>, vector<string> > MAP;
 
@@ -29,9 +28,7 @@ void inputFile(MAP &word, string speech){
 			word1 = word2;
 			word2 = word3;
 			word3 = "";
-	    }
-	    
-	    else{
+	    } else {
 	        word3 += speech[i];
 	    }
 	}
@@ -41,7 +38,7 @@ void inputFile(MAP &word, string speech){
 	KEY.push_back(word2);
 	word[KEY].push_back(word3);
 	
-} //inputFile
+}
 
 string generateTweet(MAP &word){
 	vector< vector<string> > start;
@@ -50,14 +47,12 @@ string generateTweet(MAP &word){
 	
 	for (iter = word.begin(); iter != word.end(); ++iter) {
 		char i = iter -> first[0][iter -> first[0].size() - 1];
-        if(isupper(iter -> first[0][0]) and i != '.' and i != '?' and i != '!'){
-        
-        	start.push_back(iter -> first);
-        }
+        		if (isupper(iter -> first[0][0]) and i != '.' and i != '?' and i != '!') {
+        			start.push_back(iter -> first);
+        		}
        	
 	}
 	
-	srand(time(NULL));
 	int vec1 = rand() % start.size();
 	vector<string> curKEY = start[vec1];
 	string word1 = curKEY[0];
@@ -67,11 +62,11 @@ string generateTweet(MAP &word){
 	Tweet += word1 + " " + word2;
 	char last = Tweet[Tweet.size() - 1];
 
-	while(last != '.' and last != '?' and last != '!' and word.count(curKEY) > 0){
+	while (last != '.' and last != '?' and last != '!' and word.count(curKEY) > 0) {
 		int vec2 = rand() % word.at(curKEY).size();
 		word3 = word.at(curKEY)[vec2];
 		Tweet += " " + word3;
-		last = Tweet[Tweet.size()-1];
+		last = Tweet[Tweet.size() - 1];
 		word1 = word2;
 		word2 = word3;
 		curKEY.clear();
@@ -81,7 +76,7 @@ string generateTweet(MAP &word){
 	}
 	return Tweet;
 	
-} //generateTweet
+}
 
 int main(int arg, char** vec){
    
@@ -91,7 +86,9 @@ int main(int arg, char** vec){
 	string tweet;
 	ifstream Speech(vec[1]);
 	
-	if(Speech.is_open()){
+	srand(time(NULL));
+
+	if (Speech.is_open()){
 		while(getline(Speech, str)){
 			str2 += str + " ";
 		}
@@ -99,15 +96,14 @@ int main(int arg, char** vec){
 	
 	inputFile(word, str2);	
 	
-	do{
+	do {
 		tweet = generateTweet(word);
-	}
-	
-	while(tweet.size() > 280 or tweet.size() < 80);
+	} 
+	while (tweet.size() > 280 or tweet.size() < 80);
 	
 	cout << tweet << endl;
 	
 	return 0;
 
-}//main
+}
 
