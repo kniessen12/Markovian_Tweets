@@ -47,9 +47,9 @@ string generateTweet(MAP &word){
 	
 	for (iter = word.begin(); iter != word.end(); ++iter) {
 		char i = iter -> first[0][iter -> first[0].size() - 1];
-        		if (isupper(iter -> first[0][0]) and i != '.' and i != '?' and i != '!') {
-        			start.push_back(iter -> first);
-        		}
+        	if (isupper(iter -> first[0][0]) and i != '.' and i != '?' and i != '!') {
+        		start.push_back(iter -> first);
+        	}
        	
 	}
 	
